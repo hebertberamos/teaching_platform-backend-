@@ -34,3 +34,11 @@ INSERT INTO tb_task (id, description, question_Count, approval_Count, weight, du
 
 INSERT INTO tb_lessons_done (lesson_Id, user_Id, offer_Id) VALUES (1, 1, 1);
 INSERT INTO tb_lessons_done (lesson_Id, user_Id, offer_Id) VALUES (2, 1, 1);
+INSERT INTO tb_lessons_done (lesson_Id, user_Id, offer_Id) VALUES (3, 1, 1);
+
+
+INSERT INTO tb_notification (text, moment, read, route, user_Id) VALUES ('Hoje vai ter aula ao vivo, das 18:00 as 19:30. Não perca!!', TIMESTAMP WITH TIME ZONE '2024-04-13T13:00:00Z', true, 'offers/1/resource/1/section/1', 1);
+INSERT INTO tb_notification (text, moment, read, route, user_Id) VALUES ('O pagamento da mensalidade vence dia 15/04', TIMESTAMP WITH TIME ZONE '2024-04-13T17:00:00Z', true, 'offers/1/resource/1/section/1', 1);
+
+
+INSERT INTO tb_deliver (uri, moment, status, feedback, correct_Count, offer_id, user_id, lesson_id) VALUES ('https://github.com/devsuperior/dscatalog-resources/tree/master/backend', TIMESTAMP WITH TIME ZONE '2024-04-13T10:00:00Z', 0, null, null, 1, 1, 3);

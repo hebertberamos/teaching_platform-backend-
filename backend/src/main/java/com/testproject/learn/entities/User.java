@@ -4,7 +4,7 @@ import com.testproject.learn.entities.enums.UserRole;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_user")
@@ -17,6 +17,15 @@ public class User implements Serializable {
     private String email;
     private String password;
     private UserRole role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notifications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "author")
+    private List<Topic> topics = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "likes")
+    private Set<Topic> likes = new HashSet<>();
 
     public User(){}
 
@@ -66,6 +75,18 @@ public class User implements Serializable {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public List<Topic> getTopics() {
+        return topics;
+    }
+
+    public Set<Topic> getLikes() {
+        return likes;
     }
 
     @Override
