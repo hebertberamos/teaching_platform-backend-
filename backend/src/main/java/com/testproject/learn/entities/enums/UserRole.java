@@ -3,8 +3,8 @@ package com.testproject.learn.entities.enums;
 public enum UserRole {
 
     ADMIN("admin"),
-    EMPLOYEE("employee"),
-    USER("user");
+    EMPLOYEE("teacher"),
+    USER("student");
 
     private String role;
 
