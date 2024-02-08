@@ -42,3 +42,20 @@ INSERT INTO tb_notification (text, moment, read, route, user_Id) VALUES ('O paga
 
 
 INSERT INTO tb_deliver (uri, moment, status, feedback, correct_Count, offer_id, user_id, lesson_id) VALUES ('https://github.com/devsuperior/dscatalog-resources/tree/master/backend', TIMESTAMP WITH TIME ZONE '2024-04-13T10:00:00Z', 0, null, null, 1, 1, 3);
+
+INSERT INTO tb_topic (title, body, moment, lesson_Id, offer_Id, user_Id) VALUES ('Título do tópico 1', 'Corpo do tópico 1', TIMESTAMP WITH TIME ZONE '2024-04-16T18:00:00Z', 1 , 1, 1);
+INSERT INTO tb_topic (title, body, moment, lesson_Id, offer_Id, user_Id) VALUES ('Título do tópico 2', 'Corpo do tópico 2', TIMESTAMP WITH TIME ZONE '2024-05-16T18:00:00Z', 1 , 1, 1);
+INSERT INTO tb_topic (title, body, moment, lesson_Id, offer_Id, user_Id) VALUES ('Título do tópico 2', 'Corpo do tópico 2', TIMESTAMP WITH TIME ZONE '2024-05-16T18:00:00Z', 1 , 1, 2);
+
+
+INSERT INTO tb_topic_likes (topic_Id, user_Id) VALUES (1, 2);
+INSERT INTO tb_topic_likes (topic_Id, user_Id) VALUES (3, 1);
+
+
+INSERT INTO tb_reply (body, moment, topic_Id, author_Id) VALUES ('Corpo da resposta 1', TIMESTAMP WITH TIME ZONE '2024-04-16T18:30:00Z', 1, 3);
+INSERT INTO tb_reply (body, moment, topic_Id, author_Id) VALUES ('Corpo da resposta 2', TIMESTAMP WITH TIME ZONE '2024-04-16T18:35:00Z', 3, 3);
+INSERT INTO tb_reply (body, moment, topic_Id, author_Id) VALUES ('Corpo da resposta 2', TIMESTAMP WITH TIME ZONE '2024-04-16T19:20:00Z', 2, 2);
+
+INSERT INTO tb_reply_likes (reply_Id, user_Id) VALUES (1, 1);
+INSERT INTO tb_reply_likes (reply_Id, user_Id) VALUES (3, 1);
+INSERT INTO tb_reply_likes (reply_Id, user_Id) VALUES (2, 3);

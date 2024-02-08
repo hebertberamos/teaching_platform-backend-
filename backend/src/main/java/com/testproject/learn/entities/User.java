@@ -21,12 +21,6 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "author")
-    private List<Topic> topics = new ArrayList<>();
-
-    @ManyToMany(mappedBy = "likes")
-    private Set<Topic> likes = new HashSet<>();
-
     public User(){}
 
     public User(Long id, String name, String email, String password, UserRole role) {
@@ -79,14 +73,6 @@ public class User implements Serializable {
 
     public List<Notification> getNotifications() {
         return notifications;
-    }
-
-    public List<Topic> getTopics() {
-        return topics;
-    }
-
-    public Set<Topic> getLikes() {
-        return likes;
     }
 
     @Override

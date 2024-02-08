@@ -1,12 +1,11 @@
 package com.testproject.learn.entities;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_topic")
@@ -33,10 +32,17 @@ public class Topic implements Serializable {
 
     //Many to Many with User
     @ManyToMany
-    @JoinTable(name = "tb_users_like",
+    @JoinTable(name = "tb_topic_likes",
         joinColumns = @JoinColumn(name = "topic_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> likes = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "reply_id")
+    private Reply enswer;
+
+    @OneToMany(mappedBy = "topic")
+    private List<Reply> replies = new ArrayList<>();
 
     public Topic() {}
 
@@ -108,6 +114,10 @@ public class Topic implements Serializable {
 
     public Set<User> getLikes() {
         return likes;
+    }
+
+    public List<Reply> getReplies() {
+        return replies;
     }
 
     @Override
