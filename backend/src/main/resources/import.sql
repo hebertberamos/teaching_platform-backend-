@@ -1,7 +1,9 @@
-INSERT INTO tb_user (name, email, password, role) VALUES ('Alex', 'alex@gmail.com', 'alex123', 2); -- ALUNO
-INSERT INTO tb_user (name, email, password, role) VALUES ('Gabgol', 'gab@gmail.com', 'gab123', 2); -- ALUNO
-INSERT INTO tb_user (name, email, password, role) VALUES ('Maria', 'maria @gmail.com', 'maria123', 1); -- PROFESSOR
-INSERT INTO tb_user (name, email, password, role) VALUES ('João', 'joao@gmail.com', 'joao123', 0); -- ADMIN
+-- DEFAULT PASSWORD = 123456
+INSERT INTO tb_user (name, email, password, role) VALUES ('Alex', 'alex@gmail.com', '$2a$10$bDKUbATw1ksAUutlIGJ1POSYxqJ8MAE8DXi80O854SoPBcRd5nd8y', 2); -- ALUNO
+INSERT INTO tb_user (name, email, password, role) VALUES ('gabriel', 'gabriel@gmail.com', '$2a$10$zMZoT85BPb/AnGuhNLdlfeJS3vqw9/.tcz.zcvq0PTHvcfCCimkkm', 2); -- ALUNO
+INSERT INTO tb_user (name, email, password, role) VALUES ('Maria', 'maria@gmail.com', '$2a$10$KIFzKPE0DxFZnZ8lcbxqB.YkHMI6lcFiR9MHsCvmSHZsH9.jKB0Le', 1); -- PROFESSOR
+INSERT INTO tb_user (name, email, password, role) VALUES ('João', 'joao@gmail.com', '$2a$10$8sGBs2E35JMfb5IZOHb3/OCBKHIfKWnL.nZQePMhUEdksGgtcxLD6', 0); -- ADMIN
+
 
 INSERT INTO tb_course (name, img_Uri, img_Gray_Uri) VALUES ('Java Spring', 'https://www.publicdomainpictures.net/pictures/270000/nahled/training-course-training-online.jpg', 'https://www.publicdomainpictures.net/pictures/360000/nahled/online-learning.jpg');
 

@@ -22,7 +22,7 @@ public class TokenService {
             return JWT.create()
                     .withIssuer("auth-api")
                     .withSubject(user.getEmail())
-                    .withExpiresAt(Instant.now().plusSeconds(3600)) //Token expiration time is one hour
+                    .withExpiresAt(Instant.now().plusSeconds(60)) //Token expiration time is 2 minutes
                     .sign(algorithm);
         } catch (JWTCreationException exception){
             throw new RuntimeException("Error while generating token " + exception.getMessage());

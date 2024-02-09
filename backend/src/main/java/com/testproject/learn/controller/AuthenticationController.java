@@ -1,5 +1,6 @@
-package com.testproject.learn.controller.exceptions;
+package com.testproject.learn.controller;
 
+import com.testproject.learn.controller.exceptions.FieldMessage;
 import com.testproject.learn.dtos.LoginUserDTO;
 import com.testproject.learn.dtos.RegisterUserDTO;
 import com.testproject.learn.entities.User;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthenticationResource {
+public class AuthenticationController {
 
     @Autowired
     private TokenService tokenService;

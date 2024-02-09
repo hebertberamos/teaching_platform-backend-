@@ -3,6 +3,7 @@ package com.testproject.learn.controller.exceptions;
 import java.time.Instant;
 
 import com.testproject.learn.servicies.exceptions.DatabaseException;
+import com.testproject.learn.servicies.exceptions.ForbiddenException;
 import com.testproject.learn.servicies.exceptions.ResourcesNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,17 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(DatabaseException.class)
     public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request){
         HttpStatus status = HttpStatus.BAD_REQUEST;
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Database exception");
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<StandardError> database(ForbiddenException e, HttpServletRequest request){
+        HttpStatus status = HttpStatus.FORBIDDEN;
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
         err.setStatus(status.value());
