@@ -25,7 +25,7 @@ public class AuthenticationService implements UserDetailsService {
 
     // =>  Method to return logged User
     @Transactional(readOnly = true)
-    public User authenticated(Long id){
+    public User authenticated(){
         try {
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
             return repository.findByEmail(username);
@@ -37,7 +37,7 @@ public class AuthenticationService implements UserDetailsService {
 
     // =>  Method to validate if User are the self id or ADMIN
     public void validateSelfOrAdmin(Long id){
-        User user = authenticated(id);
+        User user = authenticated();
         if(!user.getId().equals(id) && !user.hasRoleAdmin()){
             throw new ForbiddenException("Access denied");
         }
