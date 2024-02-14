@@ -22,8 +22,6 @@ public class UserController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDTO> findById(@PathVariable Long id){
-        //lógica para ver se o id que está sendo procurado é o mesmo do usuário autenticado ou se o usuário é ADMIN.
-
         UserDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
     }

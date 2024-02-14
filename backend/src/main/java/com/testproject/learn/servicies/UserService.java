@@ -16,9 +16,14 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private AuthenticationService authenticationService;
+
 
     @Transactional
     public UserDTO findById(Long id){
+        // =>  Method of recovering the user id only if it is the same id or if the user is ADMIN
+        authenticationService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User user = obj.orElseThrow(() -> new ResourcesNotFoundException("User not found"));
 

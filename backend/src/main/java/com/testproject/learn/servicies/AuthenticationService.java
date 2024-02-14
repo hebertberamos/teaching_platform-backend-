@@ -22,4 +22,24 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.findByEmail(username);
     }
+
+    // =>  Method to return logged User
+    @Transactional(readOnly = true)
+    public User authenticated(Long id){
+        try {
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            return repository.findByEmail(username);
+        }
+        catch(Exception e){
+            throw new UnauthorizedException("Ivalid user");
+        }
+    }
+
+    // =>  Method to validate if User are the self id or ADMIN
+    public void validateSelfOrAdmin(Long id){
+        User user = authenticated(id);
+        if(!user.getId().equals(id) && !user.hasRoleAdmin()){
+            throw new ForbiddenException("Access denied");
+        }
+    }
 }
