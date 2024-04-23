@@ -20,10 +20,11 @@ public class NotificationService {
     private AuthenticationService authenticationService;
 
     @Transactional(readOnly = true)
-    public Page<NotificationDTO> findAllByUser(Pageable pageable){
+    public Page<NotificationDTO> findAllByUser(boolean unreadOnly, Pageable pageable){
+        // =>  Catching user
         User user = authenticationService.authenticated();
 
-        Page<Notification> page = repository.findByUser(user, pageable);
+        Page<Notification> page = repository.find(user, unreadOnly, pageable);
         return page.map(NotificationDTO::new);
     }
 
